@@ -12,6 +12,5 @@ public class MessageProtocolEncoder extends MessageToByteEncoder<MessageProtocol
         byte[] content = messageProtocol.getContent();
         byteBuf.writeInt(length);
         byteBuf.writeBytes(content);
-        System.out.println("内容为 " + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
     }
 }

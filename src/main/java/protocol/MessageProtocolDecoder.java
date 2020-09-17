@@ -4,9 +4,11 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
+@Slf4j
 public class MessageProtocolDecoder extends ReplayingDecoder<Void> {
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
@@ -18,6 +20,6 @@ public class MessageProtocolDecoder extends ReplayingDecoder<Void> {
         messageProtocol.setContent(content);
         messageProtocol.setLen(length);
         list.add(messageProtocol);
-        System.out.println("内容为 1" + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
+        log.info("内容为 1" + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
     }
 }

@@ -3,6 +3,7 @@ package server;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 import protocol.MessageProtocol;
 
 import java.net.Inet4Address;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 /**
  * 服务器业务逻辑
  */
+@Slf4j(topic = "server")
 public class DemoServerHandler extends SimpleChannelInboundHandler<MessageProtocol> {
     int count  =  0;
     /*@Override
@@ -35,8 +37,8 @@ public class DemoServerHandler extends SimpleChannelInboundHandler<MessageProtoc
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageProtocol messageProtocol) throws Exception {
 
-        System.out.println("这是第"+ ++count +"条消息" );
-        System.out.println("内容为 " + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
+        log.info("这是第"+ ++count +"条消息" );
+        log.info("内容为 " + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
 
     }
     // @Override

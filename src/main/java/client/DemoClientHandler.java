@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 import protocol.MessageProtocol;
 
 import java.nio.charset.Charset;
@@ -12,6 +13,7 @@ import java.nio.charset.Charset;
 /**
  * 客户端业务逻辑
  */
+@Slf4j(topic = "client handler")
 public class DemoClientHandler extends SimpleChannelInboundHandler<MessageProtocol> {
 
 
