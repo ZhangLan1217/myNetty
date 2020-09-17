@@ -30,14 +30,15 @@ public class DemoServerHandler extends SimpleChannelInboundHandler<MessageProtoc
         System.out.println("RemoteAddress : " + ctx.channel().remoteAddress() + " active !");
         ctx.writeAndFlush("连接成功！");
         super.channelActive(ctx);
+        ctx.channel().read();
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageProtocol messageProtocol) throws Exception {
 
         System.out.println("这是第"+ ++count +"条消息" );
-        System.out.println("内容为 " + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
 
+        System.out.println("内容为 " + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
     }
     // @Override
     /*public void channelReadComplete(ChannelHandlerContext ctx){

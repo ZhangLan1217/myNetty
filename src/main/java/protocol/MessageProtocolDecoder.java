@@ -17,6 +17,7 @@ public class MessageProtocolDecoder extends ReplayingDecoder<Void> {
         MessageProtocol messageProtocol = new MessageProtocol();
         messageProtocol.setContent(content);
         messageProtocol.setLen(length);
+        list.add(messageProtocol);
         System.out.println("内容为 1" + new String(messageProtocol.getContent(), CharsetUtil.UTF_8));
     }
 }

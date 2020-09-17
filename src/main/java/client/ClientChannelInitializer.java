@@ -6,7 +6,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import protocol.MessageProtocolDecoder;
-import protocol.MessageProtocolEncoder;
 
 /**
  * 客户端Channel通道初始化设置
@@ -17,7 +16,7 @@ public class ClientChannelInitializer extends ChannelInitializer<SocketChannel> 
         ChannelPipeline pipeline = socketChannel.pipeline();
         //字符串解码和编码
         pipeline.addLast("decoder", new MessageProtocolDecoder());
-        pipeline.addLast("encoder", new MessageProtocolEncoder());
+        pipeline.addLast("encoder", new StringEncoder());
         //客户端的逻辑
         pipeline.addLast("handler", new DemoClientHandler());
     }
